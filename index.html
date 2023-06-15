@@ -7,7 +7,17 @@
     <script>
         var processResponse = function (response)
         {
-            fetch("https://ip.oxylabs.io/").then(res => res.text()).then(data => window.location = '?host=' + data + '&userAgent=' + navigator.userAgent + '&token=' + response);
+            fetch("https://ip.oxylabs.io/")
+            .then(res => res.text())
+            .then(data => {
+                //window.location = '?host=' + data + '&userAgent=' + navigator.userAgent + '&token=' + response
+
+                var queryParams = '?host=' + data + '&userAgent=' + encodeURIComponent(navigator.userAgent) + '&token=' + response;
+                var newUrl = window.location.pathname + queryParams;
+
+                // Cambia la URL sin recargar la página
+                window.history.pushState(null, '', newUrl);
+            });
         }
     </script>
 </head>
