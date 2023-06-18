@@ -7,11 +7,12 @@
     <script>
         var processResponse = function (response)
         {
-            var queryParams = '&userAgent=' + encodeURIComponent(navigator.userAgent) + '&token=' + response;
-            var newUrl = window.location.pathname + queryParams;
 
-            // Cambia la URL sin recargar la página
-            window.history.pushState(null, '', newUrl);
+                var queryParams = '?host=' + "1" + '&userAgent=' + encodeURIComponent(navigator.userAgent) + '&token=' + response;
+                var newUrl = window.location.pathname + queryParams;
+
+                // Cambia la URL sin recargar la página
+                window.history.pushState(null, '', newUrl);
         }
     </script>
 </head>
